@@ -52,8 +52,8 @@
 ### **`strncpy` ve `strlcpy` arasındaki farklar**
 
 1. Null Karakter Ekleme:
-    - **`strncpy`**: Belirtilen karakter sayısı kadar kopyalama yapar, ancak hedef dizi tamamen doldurulmadan önce sonlandırıcı null karakter (**`'\0'`**) eklemeyebilir. Bu, hedef dizinin sonunda bir null karakterin eksik olabileceği anlamına gelir, bu da potansiyel olarak hatalı bir C string oluşturabilir.
-    - **`strlcpy`**: Kaynak dizi ile hedef dizi arasındaki veriyi belirtilen karakter sayısı kadar kopyalar ve ardından hedef dizinin sonuna kesinlikle bir null karakter (**`'\0'`**) ekler. Bu, her zaman geçerli bir C string oluşturur.
+    - **`strncpy`**: Belirtilen karakter sayısı kadar kopyalama yapar, ancak hedef dizi tamamen doldurulmadan önce sonlandırıcı null karakter **`'\0'`** eklemeyebilir. Bu, hedef dizinin sonunda bir null karakterin eksik olabileceği anlamına gelir, bu da potansiyel olarak hatalı bir C string oluşturabilir.
+    - **`strlcpy`**: Kaynak dizi ile hedef dizi arasındaki veriyi belirtilen karakter sayısı kadar kopyalar ve ardından hedef dizinin sonuna kesinlikle bir null karakter **`'\0'`** ekler. Bu, her zaman geçerli bir C string oluşturur.
 2. Dizi Sınırı Aşımı:
     - **`strncpy`**: Hedef dizi boyutunu aşmayacak şekilde kopyalama yapar, ancak bu, kaynak dizinin boyutunu aşmasını engellemez. Eğer kaynak dizi hedef diziyi aşıyorsa, null karakter eklenmez ve hedef dizide beklenmedik sonuçlar veya bellek taşmaları olabilir.
     - **`strlcpy`**: Kaynak dizinin boyutunu aşması durumunda dizi sınırı aşımını engeller ve yalnızca belirtilen karakter sayısı kadar veriyi kopyalar.

@@ -197,3 +197,115 @@ void *malloc(size_t size);
 
 - `size:` Tahsis edilecek belleğin boyutu. Bu boyut, bayt cinsinden ifade edilir.
 - `*void:` Tahsis edilen belleğin başlangıç adresini gösteren bir işaretçi.
+
+
+# Pointer Nedir?
+
+Tipik olarak bir bilgisayar, ayrı ayrı veya bitişik gruplar halinde idare
+edilebilen ardışık olarak sayısallaştırılmış veya adreslenmiş hafıza
+hücrelerinin bir dizisine sahiptir. İşaretçiler, hafızadaki bir yerin
+adresini `(byte sıra numarası)` içeren bir değişkendir.
+
+Bir veri bloğunun bellekte bulunduğu adresi içeren (gösteren) veri tipidir.
+
+- Tanımlama biçimi: `“veri tipi” *ptr;`
+
+- `ptr` değişkeni `“veri tipi”` ile belirtilen tipte bir verinin bellekte saklandığı adresi içerir.
+
+- Tanımlama sonucunda bellekte `ptr` değişkeni mevcuttur. Ancak işaret ettiği veri bloğu yoktur.
+
+1. Kullanılan herhangi bir değişkeni işaret etmek
+2. Veri bloğunu boş belleği kullanarak oluşturmak
+
+**`Pointer` değişkenin var olan bir değişkenin bulunduğu adresi göstermesi nasıl sağlanır?**
+
+- Bu işlemi yapabilmek için var olan değişkenin adresinin bilinmesi gerekmektedir.
+
+- `&:` Bir değişkenin adresinin belirlenmesi için kullanılır.
+
+- `&ptr:` Belirtilen değişkenin adresini verir.
+
+**Veri bloğunu boş belleği kullanarak oluşturmak nasıl sağlanır?**
+
+- Bu yol sayesinde veriler için dinamik yer ayırılır. 
+
+- Bunun için `malloc` işlevi kullanılır.
+
+- `void *malloc(n):` Boş bellekten `n byte` yer ayırıp başlangıç adresini döndürür.
+
+**Veriye işaretçi değişken yoluyla erişim nasıl sağlanır?**
+
+- Bir işaretçinin gösterdiği adresteki veriye erişmek için işaretçi değişkeninin önüne * karakteri konur.
+
+```c
+int main()
+{
+    int i;
+    int *ptr;
+
+    ptr = &i;
+    *ptr = 42;
+    printf("i değişkeninin değeri %d\n", i);
+    printf("ptr adresinin içeriği %d\n", *ptr);
+}
+```
+
+- `Pointer` değişkenler üzerinde toplama ve çıkartma işlemleri `(++, --)` geçerlidir ve eklenecek değer tamsayı olmalıdır.
+
+- `Pointer` değişkenin değeri 1 arttırıldığı zaman değişken bir sonraki veri bloğunu işaret eder.
+
+- Değişkenin alacağı yeni değer işaretçi değişkenin ne tip bir veri bloğunu işaret ettiğine bağlıdır.
+
+`int *ptr, i;`
+`ptr = &i;` 
+
+- i değişkenin adresinin 1000 olduğunu varsayalım. `ptr = 1000 (bellek adresi)`
+
+- `ptr++;` `ptr = 1002 (bellek adresi)` ( `int` değeri işaret ettiği için)
+
+- '(ptr + 4) = 2;' 1008 adresinin içeriğini 2 yapar.
+
+`double *ptr, i;`
+
+`ptr = &i;`
+
+- i değişkenin adresinin 1000 olduğunu varsayalım. `ptr = 1000 (bellek adresi)`
+
+- `ptr++;` `ptr = 1008 (bellek adresi)` ( `double` değeri işaret ettiği için)
+
+'!!! Arttırma, işaret edilen veri bloğuna göre yapılır.'
+
+Bir sonraki veri bloğunun gösterilmesi sağlanır.
+
+`ptr++; Bir sonraki veri bloğunu gösterir.
+(*ptr)++; Değişkeninin gösterdiği adresteki değeri 1 arttır.`
+
+### Pointers and Arrays
+
+`Pointer aritmetiği` sayesinde dizilere işaretçi değişkenler ile erişmek mümkündür.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int i[10], j;
+    int *ptr;
+    for (j=0; j<10; j++)
+        i[j] = j;
+    /* dizinin başlangıç adresine erişmek için ilk elemanın adresi kullanılabilir veya doğrudan erişim sağlanabilir */
+    ptr = i;
+    for (j=0; j<10; j++)
+    {
+        printf("%d ", ptr);
+        ptr++;
+    }
+    printf("\n");
+    /* ptr artık dizinin başını göstermez */
+    ptr = i;
+    for (j=0; j<10; j++)
+        printf("%d ", (iptr+j));
+    printf("\n");
+    /* ptr hala dizinin başını gösterir */
+}
+```

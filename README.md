@@ -130,7 +130,7 @@ Bu örnekte, dest dizisine src dizisinin ilk 5 karakteri kopyalanır. Dest dizis
 
 **printf() fonksiyonunun çıktısı şu şekildedir:**
 
-`**HelloWorld**`
+`HelloWorld`
 
 **strlcat'ın bir örneği:**
 
@@ -147,18 +147,18 @@ Bu örnekte, dest dizisine src dizisinin tüm karakterleri kopyalanır. Dest diz
 
 **printf() fonksiyonunun çıktısı şu şekildedir:**
 
-`**HelloWorld**`
+`HelloWorld`
 
-strncat ve strlcat, C programlama dilinde sık kullanılan fonksiyonlardır. Ancak strlcat, daha güvenli bir seçenektir. Çünkü `**strncat**`, hedef dizenin boyutunu aşması durumunda, hedef dizinin üzerine yazma yapabilir. `**strlcat**` ise, hedef dizenin boyutunu aşmaması için dikkatli davranır.
+strncat ve strlcat, C programlama dilinde sık kullanılan fonksiyonlardır. Ancak strlcat, daha güvenli bir seçenektir. Çünkü `strncat`, hedef dizenin boyutunu aşması durumunda, hedef dizinin üzerine yazma yapabilir. `strlcat` ise, hedef dizenin boyutunu aşmaması için dikkatli davranır.
 
 **strncat ve strlcat'ın kullanımları şu şekilde özetlenebilir:**
 
-- `**strncat**`, hedef dizenin boyutunun önemli olmadığı durumlarda kullanılabilir.
+- **`strncat`**, hedef dizenin boyutunun önemli olmadığı durumlarda kullanılabilir.
 - **`strlcat`**, hedef dizenin boyutunun önemli olduğu durumlarda kullanılabilir.
 - **`strlcat`**, daha güvenli bir seçenektir.
 
 # C04
-- `**Recursive Fonksiyon**`
+- `Recursive Fonksiyon`
     
     Kendi kendilerini çağırarak çalışırlar. Bu nedenle, değişkenlerin değerlerini tutmak için **`yığın (stack)`** yapısını kullanırlar. Yığın, bir tür bellek hiyerarşisidir ve en son eklenen veri en üstte bulunur. Özyineli fonksiyonlar, her çağrıda yığına yeni bir veri kümesi ekler ve her dönüşte yığından bir veri kümesi kaldırırlar.
     
@@ -166,3 +166,34 @@ strncat ve strlcat, C programlama dilinde sık kullanılan fonksiyonlardır. Anc
     1. Fonksiyon, temel duruma ulaşıncaya kadar kendi kendini çağırır.
     2. Temel duruma ulaşıldığında, fonksiyon sonucunu döndürür.
     3. Fonksiyon, temel duruma ulaşmadan önce, yaptığı işlemleri geriye doğru yürütür.
+
+# C05
+**`Bu aşamada tek bir info var.`**
+- Matematiksel fonksiyonların işleyişini biliyorsan rahatlıkla algoritmaları kurabilirsin. 😅
+
+# C06
+`argl` ve `argv` değişkenleri, programın komut satırı argümanlarını temsil eder. `argl` değişkeni, argüman sayısını tutarken, `argv` değişkeni, argümanların karakter dizilerini içeren bir dizi işaretçidir.
+
+`argl` değişkeninin değeri, programın adı da dahil olmak üzere argüman sayısını içerir.
+- Örneğin, `program1 arg1 arg2` komutuyla çalıştırılan bir program için `argl` değeri 3 olacaktır.
+
+`argv` değişkeninin her bir öğesi, bir komut satırı argümanını temsil eder.
+- Örneğin, `program1 arg1 arg2` komutuyla çalıştırılan bir program için `argv[0]`, `program1` karakter dizisini, `argv[1]`, `arg1` karakter dizisini ve `argv[2]`, `arg2` karakter dizisini gösterecektir.
+
+# C07
+### `Malloc`
+
+- `<stdlib.h>` kütüphanesi içerisinde barınan bir fonksiyondur.
+- `Malloc`, işletim sisteminden bellek tahsis eden bir fonksiyondur. `(memory allocation)`
+- `Malloc`, tek bir parametre alır o da tahsis edilecek alanın boyutudur. Bu boyut, bayt cinsinden ifade edilir.
+- Sorunsuz bir şekilde bellekten alan tahsis edilirse, `malloc` tahsis edilen alanın başlangıç adresini gösteren bir `pointer` döndürür. Eğer işlem başarısız gerçekleşirse `NULL` döndürür.
+- `Malloc` fonksiyonu, dinamik bellek yönetimi için kullanılır. `Dinamik bellek yönetimi`, programın çalışma süresi boyunca bellek tahsis etmesine olanak tanır.
+
+```c
+void *malloc(size_t size);
+```
+
+`Malloc` fonksiyonunun iki parametresi vardır:
+
+- `size:` Tahsis edilecek belleğin boyutu. Bu boyut, bayt cinsinden ifade edilir.
+- `*void:` Tahsis edilen belleğin başlangıç adresini gösteren bir işaretçi.

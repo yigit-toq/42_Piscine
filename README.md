@@ -34,20 +34,19 @@
 ### **`printf` formatları**
 
 1. **`%d`**: Tam sayıları (int) yazdırmak için kullanılır.
-Örnek: **`printf("Sayı: %d\n", 42);`**
+ - Örnek: **`printf("Sayı: %d\n", 42);`**
 2. **`%f`**: Ondalık sayıları (float veya double) yazdırmak için kullanılır.
-Örnek: **`printf("Ondalık Sayı: %f\n", 3.14159);`**
+ - Örnek: **`printf("Ondalık Sayı: %f\n", 3.14159);`**
 3. **`%c`**: Tek karakterleri yazdırmak için kullanılır.
-Örnek: **`printf("Karakter: %c\n", 'A');`**
+ - Örnek: **`printf("Karakter: %c\n", 'A');`**
 4. **`%s`**: Karakter dizilerini (string) yazdırmak için kullanılır.
-Örnek: **`printf("Metin: %s\n", "Merhaba, dünya!");`**
+ - Örnek: **`printf("Metin: %s\n", "Merhaba, dünya!");`**
 5. **`%x`** veya **`%X`**: İşaretsiz tam sayıları onaltılı (hexadecimal) biçimde yazdırmak için kullanılır.
-Örnek: **`printf("Hex Değer: %x\n", 255);`**
+ - Örnek: **`printf("Hex Değer: %x\n", 255);`**
 6. **`%p`**: İşaretçilerin (pointer) adresini yazdırmak için kullanılır.
-Örnek: **`int x = 42; printf("İşaretçi Adresi: %p\n", &x);`**
+ - Örnek: **`int x = 42; printf("İşaretçi Adresi: %p\n", &x);`**
 7. **`%u` :** pozitif tam sayıları yazdırmak için kullanılır.
-    
-    Örnek: **`unsigned int x = 42; printf("Pozitif Sayı: %u\n", x);`**
+ - Örnek: **`unsigned int x = 42; printf("Pozitif Sayı: %u\n", x);`**
 
 # C02
 ### **`strncpy` ve `strlcpy` arasındaki farklar**
